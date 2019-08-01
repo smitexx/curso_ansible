@@ -1,0 +1,52 @@
+**********CARPETAS DEL PROYECTO************
+common: Common playbooks, roles and vars files to all the environments
+
+old: Files before splitting environments, not referenced, and deprecated
+
+template: Template for new environments.
+
+hq: Environment used to manage hosts at erasmusu HQ.
+
+php56: Environment to tests php 5.6 migration.
+
+production: Production environment (current).
+
+replica: Environment used to test mysql replication between ovh and aws hosts.
+
+furl-service: furl-service environment for test furl service.
+
+infra:
+
+test: 
+
+**INICIO**
+Para empezar con ansible tendremos que tener descargado pip y pipenv, para desplegar en un directorio un entorno virtual de repositorios que serán los deseados para trabajar con ellos, estos repositorios son de python y están restringidos a los que nos ofrece, para montar el entorno virtual tenemos que tener un fichero de configuración con los repositorios requeridos, llamado Pipfile
+
+--Pipfile--
+
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+
+[packages]
+ansible = "==2.6.2"
+awscli = "==1.15.76"
+botocore = "==1.10.75"
+"boto3" = "==1.7.75"
+boto = "==2.49.0"
+jmespath = "==0.9.3"
+ansible-cmdb = "==1.28"
+ansible-lint = "==3.4.23"
+requests = "==2.22.0"
+ipython = "*"
+
+[requires]
+python_version = "3.5"
+
+
+Para montar el entorno virtual 
+
+pipenv install --> en el directorio donde tengamos el fichero pipfile 
