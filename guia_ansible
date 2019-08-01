@@ -50,3 +50,52 @@ python_version = "3.5"
 Para montar el entorno virtual 
 
 pipenv install --> en el directorio donde tengamos el fichero pipfile 
+
+pipenv shell --> para lanzar la consola que nos permite usar los repositorios requeridos.
+
+
+
+********INCISO CON VAGRANT**************
+
+Vagrant nos permite levantar las máquinas virtuales que queramos, para ello tenemos que tener un Vagrantfile en nuestro proyecto.
+
+Previamente tenemos que añadir las imágenes de los sistemas operativos que necesitemos a nuestro vagrant.
+
+vagrant box list --> nos muestra la lista de imágenes que tiene vagrant de SSOO.
+
+Comandos: 
+1) vagrant create --> nos genera el fichero Vagrantfile, este tiene toda la configuración de las máquinas virtuales que queremos levantar.
+2) vagrant up --> levantamos la máquina
+
+Para configurar el ssh y poder tener acceso ssh desde otra máquina tenemos que ejecutar lo siguiente:
+
+1) vagrant ssh-config --> esto nos muestra la configuración de nuestra máquina virtual, la salida de esta configuración hay que llevarla al config del .ssh
+2) vagrant ssh-config >> ~/.ssh/config --> con esto tenemos configurado el ssh a la máquina virtual, ya que vagrant por defecto nos añade la clave pública en nuestro ssh/authorized_keys
+
+Si utilizamos ansible con vagrant tendremos que tener instalado en nuestras máquinas virtuales python.
+
+1)ssh default --> entramos a la máquina virtual por ssh  
+2)sudo apt install python
+
+Para configurar el agente SSH para evitar volver a escribir las contraseñas, puede hacer lo siguiente:
+
+1) ssh-agent bash
+2) ssh-add ~/.ssh/id_rsa
+
+
+CARPETAS DE UN PROYECTO ANSIBLE:
+
+inventory: guarda el inventorio de hosts a los que se le lanzan las acciones definidas
+
+├── inventory
+│   ├── group_vars --> variables de los grupos habría que hacer un fichero .yml con cada grupo
+│   ├── hosts
+│   └── host_vars
+│       ├── default.yml --> fichero de variables de la máquina virtual
+│       └── localhost.yml --> fichero de variables del localhost
+
+
+
+
+
+
