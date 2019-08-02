@@ -1,0 +1,6 @@
+---
+# file: vars/chrome.yml
+
+chrome_version: '75.0.3770.142-1'
+
+plugins_bookings: [ 'tunnelBear', 'aircall' ]

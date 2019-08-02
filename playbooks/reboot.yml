@@ -1,0 +1,5 @@
+- name: Unconditionally reboot the machine with all defaults
+  hosts: default
+  become: true
+  tasks: 
+  - command: reboot

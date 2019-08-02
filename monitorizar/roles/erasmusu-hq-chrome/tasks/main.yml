@@ -1,0 +1,32 @@
+---
+# tasks file for erasmusu-hq-chrome
+
+- name: Copy source list file for chrome
+  copy:
+    src: google-chrome.list
+    dest: /etc/apt/sources.list.d/
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Install GPG key
+  apt_key:
+    url: https://dl.google.com/linux/linux_signing_key.pub
+    state: present
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Install chrome (latest)
+  apt:
+    name: google-chrome-stable
+    state: latest
+    update_cache: yes
+  when: version == 'latest'
+
+- name: Install chrome {{ version }}
+  apt:
+    name: "google-chrome-stable={{ version }}"
+    state: present
+  when: version != 'latest'

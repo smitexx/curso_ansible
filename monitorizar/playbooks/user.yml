@@ -1,0 +1,17 @@
+#1
+ - name: add pruebas user
+   hosts: default
+   become: true
+   tasks: 
+     - name: crear usuario hola
+       user:
+         name: hola 
+         password: home
+         state: present 
+#2
+ - name: Unconditionally reboot the machine with all defaults
+   hosts: default
+   become: true
+   tasks:
+     - name: reinicia la máquina 
+       command: reboot

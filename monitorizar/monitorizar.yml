@@ -1,0 +1,15 @@
+#1
+ - name: instalar chrome
+   hosts: default
+   become: true
+   vars_files:
+    - vars/chrome.yml
+   roles:
+    - { role: erasmusu-hq-chrome }
+   tasks:
+    - name: set default www browser to chrome
+      alternatives:
+        name: x-www-browser
+        path: /usr/bin/google-chrome-stable
+        priority: 200
+
